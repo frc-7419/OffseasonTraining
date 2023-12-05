@@ -34,6 +34,13 @@ public class ArcadeDrive extends CommandBase {
     if (Math.abs(controller.getLeftY()) > 0.01) {
       driveBaseSubsystem.setPower(powerY, powerY);
     }
+    double distance = distanceSensorSubsystem.getDistance();
+    if (distance > 0.5) {
+      driveBaseSubsystem.setPower(0.3, 0.3);
+    }
+    else {
+      driveBaseSubsystem.setPower(0, 0);
+    }
   }
 
   // Called once the command ends or is interrupted.
