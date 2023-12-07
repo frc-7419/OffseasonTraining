@@ -3,17 +3,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveBaseSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.subsystems.DistanceSensorSubsystem;
+// import frc.robot.subsystems.DistanceSensorSubsystem;
 
 public class ArcadeDrive extends CommandBase {
   private DriveBaseSubsystem driveBaseSubsystem;
   private XboxController controller;
-  private DistanceSensorSubsystem distanceSensorSubsystem;
+  // private DistanceSensorSubsystem distanceSensorSubsystem;
 
-  public ArcadeDrive(DriveBaseSubsystem driveBaseSubsystem, XboxController controller, DistanceSensorSubsystem distanceSensorSubsystem) {
+  public ArcadeDrive(DriveBaseSubsystem driveBaseSubsystem, XboxController controller) {
     this.driveBaseSubsystem = driveBaseSubsystem;
     this.controller = controller;
-    this.distanceSensorSubsystem = distanceSensorSubsystem;
+    // this.distanceSensorSubsystem = distanceSensorSubsystem;
     addRequirements(driveBaseSubsystem);
   }
 
@@ -34,12 +34,12 @@ public class ArcadeDrive extends CommandBase {
     if (Math.abs(controller.getLeftY()) > 0.01) {
       driveBaseSubsystem.setPower(powerY, powerY);
     }
-    double distance = distanceSensorSubsystem.getDistance();
-    if (distance > 0.5) {
-      driveBaseSubsystem.setPower(0.3, 0.3);
-    } else {
-      driveBaseSubsystem.setPower(0, 0);
-    }
+    // double distance = distanceSensorSubsystem.getDistance();
+    // if (distance > 0.5) {
+    //   driveBaseSubsystem.setPower(0.3, 0.3);
+    // } else {
+    //   driveBaseSubsystem.setPower(0, 0);
+    // }
   }
 
   // Called once the command ends or is interrupted.
