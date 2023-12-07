@@ -27,11 +27,11 @@ public class ArcadeDrive extends CommandBase {
   @Override
   public void execute() {
     double powerX = controller.getRightX() * 0.3;
-    double powerY = controller.getLeftY() * 0.3;
-    if (Math.abs(controller.getRightX()) > 0.01) {
+    double powerY = controller.getRightY() * 0.3;
+    if (Math.abs(controller.getRightX()) > 0.03) {
       driveBaseSubsystem.setPower(powerX, -powerX);
     }
-    if (Math.abs(controller.getLeftY()) > 0.01) {
+    if (Math.abs(controller.getRightY()) > 0.03) {
       driveBaseSubsystem.setPower(powerY, powerY);
     }
     // double distance = distanceSensorSubsystem.getDistance();
