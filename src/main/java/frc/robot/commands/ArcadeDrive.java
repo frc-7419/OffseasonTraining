@@ -26,12 +26,12 @@ public class ArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double powerX = controller.getRightX() * 0.3;
-    double powerY = controller.getRightY() * 0.3;
-    if (Math.abs(controller.getRightX()) > 0.03) {
+    double powerY = controller.getRightX() * 0.3;
+    double powerX = controller.getLeftY() * 0.3;
+    if (Math.abs(controller.getRightX()) > 0.1) {
       driveBaseSubsystem.setPower(powerX, -powerX);
     }
-    if (Math.abs(controller.getRightY()) > 0.03) {
+    if (Math.abs(controller.getLeftY()) > 0.1) {
       driveBaseSubsystem.setPower(powerY, powerY);
     }
     // double distance = distanceSensorSubsystem.getDistance();
