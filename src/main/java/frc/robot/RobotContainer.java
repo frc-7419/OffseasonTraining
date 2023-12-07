@@ -33,6 +33,6 @@ public class RobotContainer {
   }
   
   public void setDefaultCommands() {
-    
+    driveBaseSubsystem.setDefaultCommand(arcadeDrive);
   }
 }
