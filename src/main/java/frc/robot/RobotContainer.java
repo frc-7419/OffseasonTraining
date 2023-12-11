@@ -2,12 +2,14 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import the xbox joystick class
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID;
 // import the commands
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.DriveBaseSubsystem;
-// import frc.robot.subsystems.DistanceSensorSubsystem;
+import frc.robot.commands.DrivetoDistance;
 
 
 public class RobotContainer {
@@ -24,6 +26,12 @@ public class RobotContainer {
 
   public RobotContainer() {
     configureBindings();
+    configureButtonBindings();
+    setDefaultCommands();
+  }
+
+  private void configureButtonBindings() {
+    new JoystickButton(controller, XboxController.Button.kA.value).onTrue(new DrivetoDistance(driveBaseSubsystem));
   }
 
   private void configureBindings() {}
@@ -31,6 +39,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
+
   
   public void setDefaultCommands() {
     driveBaseSubsystem.setDefaultCommand(arcadeDrive);
