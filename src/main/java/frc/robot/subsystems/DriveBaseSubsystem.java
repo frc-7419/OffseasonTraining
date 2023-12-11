@@ -1,15 +1,23 @@
 package frc.robot.subsystems;
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 public class DriveBaseSubsystem extends SubsystemBase {
-  // create your private TalonFXs
+  private TalonFX motor;
   public DriveBaseSubsystem() {
-    // initialize da motors with CANIds from Constants.java
+    motor = new TalonFX(50);
   }
-  
-  // write your setPower methods
-
   @Override
-  public void periodic() {}
+  public void periodic() {
+  }
+  public void coast(){
+    motor.setNeutralMode(NeutralMode.Coast);
+  }
+    public void brake(){
+      motor.setNeutralMode(NeutralMode.Brake);
+    }
+  public void setPower(double power){
+    motor.set(ControlMode.PercentOutput, power);
+  }
 }
