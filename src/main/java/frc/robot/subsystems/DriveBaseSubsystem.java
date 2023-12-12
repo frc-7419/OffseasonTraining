@@ -16,11 +16,9 @@ public class DriveBaseSubsystem extends SubsystemBase {
   private TalonFX left2;
   private TalonFX right1;
   private TalonFX right2;
-  private AnalogPotentiometer ultrasonic;
   
   // write your setPower methods
   public DriveBaseSubsystem() {
-    ultrasonic = new AnalogPotentiometer(0, 300, 0);
     left1 = new TalonFX(CANIds.leftFalcon1.id);
     left2 = new TalonFX(CANIds.leftFalcon2.id);
     right1 = new TalonFX(CANIds.rightFalcon1.id);
@@ -60,27 +58,10 @@ public class DriveBaseSubsystem extends SubsystemBase {
     right1.set(ControlMode.PercentOutput, powerRight);
     right2.set(ControlMode.PercentOutput, powerRight);
   }
-
-  public double getLeftVelocity() {
-    return left1.getSelectedSensorVelocity();
-  }
-  
-  public double getRightVelocity() {
-    return right1.getSelectedSensorVelocity();
-  }
-
-  public double getSensorPosition() {
-    return left1.getSelectedSensorPosition();
-  }
-
-  public double getUltrasonicDistance() {
-    return ultrasonic.get();
-  }
   
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-    SmartDashboard.putNumber("ultrasonic", ultrasonic.get());
+
   }
   
 }
