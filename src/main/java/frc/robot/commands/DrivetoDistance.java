@@ -25,7 +25,7 @@ public class DrivetoDistance extends CommandBase {
   @Override
   public void initialize() {
     driveBaseSubsystem.coast();
-    target = 30;
+    target = 10;
   }
 
 
@@ -34,7 +34,6 @@ public class DrivetoDistance extends CommandBase {
   public void execute() {
     double distance = driveBaseSubsystem.getUltrasonicDistance();
     double filtered = m_filter.calculate(distance);
-    // drivebaseSubsystem.setAll(pid.calculate(filtered, target));
     System.out.println(pid.calculate(filtered, target));
   }
 

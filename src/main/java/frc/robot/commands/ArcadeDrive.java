@@ -25,8 +25,8 @@ public class ArcadeDrive extends CommandBase {
   @Override
   public void execute() {
 
-    double forwardPower = controller.getLeftY()*0.3;
-    double turnPower = controller.getRightX()*0.3;
+    double forwardPower = controller.getRightX()*0.3;
+    double turnPower = controller.getLeftY()*0.3;
 
     double total = forwardPower + turnPower;
     
