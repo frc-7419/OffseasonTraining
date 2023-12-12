@@ -25,23 +25,29 @@ public class ArcadeDrive extends CommandBase {
   @Override
   public void execute() {
 
-    double X = controller.getLeftX()*0.3;
-    double Y = controller.getLeftY()*0.3;
+    double forwardPower = controller.getLeftY()*0.3;
+    double turnPower = controller.getRightX()*0.3;
 
-    double maximum = Math.max(Math.abs(X), Math.abs(Y));
-    double total = X + Y;
-    double difference = X - Y;
+    double total = forwardPower + turnPower;
     
-    if (X >= 0 && Y >= 0) {
-      driveBaseSubsystem.setLeftRightPower(maximum, difference);
-    } else if (X >= 0) {
-      driveBaseSubsystem.setLeftRightPower(total, maximum);
-    } else if (Y >= 0) {
-      driveBaseSubsystem.setLeftRightPower(total, -maximum);
-    } else {
-      driveBaseSubsystem.setLeftRightPower(-maximum, difference);
+
+
+    if (Math.abs(controller.getLeftY()) >= 0.05) {
+      driveBaseSubsystem.setLeftRightPower(forwardPower, forwardPower);
+    }
+    if (Math.abs(controller.getRightX()) >= 0.05) {
+      driveBaseSubsystem.setLeftRightPower(turnPower, -turnPower);
     }
 
+    // if (controller.getLeftY() >= 0.05 && (controller.getRightX()) >= 0.05) {
+    //   driveBaseSubsystem.setLeftRightPower(total, -total);
+    // }
+    // else if(controller.getLeftY() <= -0.05 && controller.getRightX() <= 0.05) {
+    //   driveBaseSubsystem.setLeftRightPower(-total, total);
+    // }
+    // else {
+    //   driveBaseSubsystem.setLeftRightPower(total, total);
+    // }
   }
 
   // Called once the command ends or is interrupted.
