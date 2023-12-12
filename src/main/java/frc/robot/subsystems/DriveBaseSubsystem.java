@@ -28,7 +28,6 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
     factoryResetAll();
     
-    setAllDefaultInversions();
     left2.follow(left1);
     right2.follow(right1);
   }
@@ -54,12 +53,6 @@ public class DriveBaseSubsystem extends SubsystemBase {
     right2.configFactoryDefault();
   }
 
-  public void setAllDefaultInversions() {
-    left1.setInverted(false);
-    left2.setInverted(false);
-    right1.setInverted(true);
-    right2.setInverted(true);
-  }
 
   public void setLeftRightPower(double powerLeft, double powerRight) {
     left1.set(ControlMode.PercentOutput, powerLeft);
