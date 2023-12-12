@@ -33,10 +33,10 @@ public class ArcadeDrive extends CommandBase {
 
 
     if (Math.abs(controller.getLeftY()) >= 0.05) {
-      driveBaseSubsystem.setLeftRightPower(forwardPower, forwardPower);
+      driveBaseSubsystem.setLeftRightPower(turnPower, -turnPower);
     }
     if (Math.abs(controller.getRightX()) >= 0.05) {
-      driveBaseSubsystem.setLeftRightPower(turnPower, -turnPower);
+      driveBaseSubsystem.setLeftRightPower(forwardPower, forwardPower);
     }
 
     // if (controller.getLeftY() >= 0.05 && (controller.getRightX()) >= 0.05) {
