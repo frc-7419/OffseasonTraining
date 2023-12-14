@@ -15,9 +15,10 @@ public class DrivetoDistance extends CommandBase {
     DriveBaseSubsystem driveBaseSubsystem;
     DistanceSensorSubsystem distanceSensorSubsystem;
     float target;
-    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem, AnalogPotentiometer analogPotentiometer) {
+    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem) {
       this.driveBaseSubsystem = driveBaseSubsystem;
       distanceSensorSubsystem = new DistanceSensorSubsystem();
+      addRequirements(driveBaseSubsystem);
     }
   
     @Override
@@ -31,7 +32,7 @@ public class DrivetoDistance extends CommandBase {
     public void execute() {
         double setPower = distanceSensorSubsystem.getDistance();
         if (setPower > target) {
-            driveBaseSubsystem.setLeftRightPower(0.3 * setPower, 0.3 * setPower);
+            driveBaseSubsystem.setLeftRightPower(5 * setPower, 5 * setPower);
         }
     }
 
@@ -45,7 +46,7 @@ public class DrivetoDistance extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-    return false;
+      return false;
     }
   
 }

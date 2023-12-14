@@ -10,10 +10,10 @@ public class DistanceSensorSubsystem extends SubsystemBase {
   private AnalogPotentiometer analogPotentiometer;
   public DistanceSensorSubsystem() {
     // instantiate your sensor
-    analogPotentiometer = new AnalogPotentiometer(1, 180, 30);
+    analogPotentiometer = new AnalogPotentiometer(0, 180, 30);
   };
   
-  // make a getDistance method
+  // make a getDistance methodt
   public double getDistance() {
     return analogPotentiometer.get();
   }
