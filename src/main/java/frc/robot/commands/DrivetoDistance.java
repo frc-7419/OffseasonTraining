@@ -15,9 +15,9 @@ public class DrivetoDistance extends CommandBase {
     DriveBaseSubsystem driveBaseSubsystem;
     DistanceSensorSubsystem distanceSensorSubsystem;
     float target;
-    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem) {
+    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem, AnalogPotentiometer analogPotentiometer) {
       this.driveBaseSubsystem = driveBaseSubsystem;
-      distanceSensorSubsystem = new DistanceSensorSubsystem();
+      distanceSensorSubsystem = new DistanceSensorSubsystem(analogPotentiometer);
       addRequirements(driveBaseSubsystem);
     }
   

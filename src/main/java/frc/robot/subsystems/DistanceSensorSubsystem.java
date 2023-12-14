@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DistanceSensorSubsystem extends SubsystemBase {
   // create your private AnalogPotentiometer instance variable
   private AnalogPotentiometer analogPotentiometer;
-  public DistanceSensorSubsystem() {
+  public DistanceSensorSubsystem(AnalogPotentiometer analogPotentiometer) {
     // instantiate your sensor
-    analogPotentiometer = new AnalogPotentiometer(0, 180, 30);
+    this.analogPotentiometer = analogPotentiometer;
   };
   
   // make a getDistance methodt

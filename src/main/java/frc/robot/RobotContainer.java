@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import the xbox joystick class
 import edu.wpi.first.wpilibj.XboxController;
+
+import com.revrobotics.AnalogInput;
+
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.GenericHID;
 // import the commands
@@ -16,7 +19,7 @@ import frc.robot.commands.DrivetoDistance;
 public class RobotContainer {
   
   //init your joysticks
-  private XboxController controller = new XboxController(0);
+  private XboxController controller = new XboxController(1);
   
   // init your subsystems
   private DriveBaseSubsystem driveBaseSubsystem = new DriveBaseSubsystem();
@@ -25,6 +28,8 @@ public class RobotContainer {
   // innit your commands
   private ArcadeDrive arcadeDrive = new ArcadeDrive(driveBaseSubsystem, controller);
 
+  AnalogPotentiometer analogPotentiometer = new AnalogPotentiometer(0, 180, 30);
+
   public RobotContainer() {
     configureBindings();
     configureButtonBindings();
@@ -32,13 +37,13 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    new JoystickButton(controller, XboxController.Button.kA.value).onTrue(new DrivetoDistance(driveBaseSubsystem));
+    new JoystickButton(controller, XboxController.Button.kA.value).onTrue(new DrivetoDistance(driveBaseSubsystem, analogPotentiometer));
   }
 
   private void configureBindings() {}
 
   public Command getAutonomousCommand() {
-    return new DrivetoDistance(driveBaseSubsystem);
+    return new DrivetoDistance(driveBaseSubsystem, analogPotentiometer);
   }
 
   
