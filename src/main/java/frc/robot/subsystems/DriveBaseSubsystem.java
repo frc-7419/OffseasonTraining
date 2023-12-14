@@ -16,6 +16,8 @@ public class DriveBaseSubsystem extends SubsystemBase {
   private TalonFX left2;
   private TalonFX right1;
   private TalonFX right2;
+
+  AnalogPotentiometer analogPotentiometer;
   
   // write your setPower methods
   public DriveBaseSubsystem() {
@@ -23,6 +25,8 @@ public class DriveBaseSubsystem extends SubsystemBase {
     left2 = new TalonFX(CANIds.leftFalcon2.id);
     right1 = new TalonFX(CANIds.rightFalcon1.id);
     right2 = new TalonFX(CANIds.rightFalcon2.id);
+
+    analogPotentiometer  = new AnalogPotentiometer(0, 300, 0);
 
     factoryResetAll();
     
@@ -57,6 +61,11 @@ public class DriveBaseSubsystem extends SubsystemBase {
     left2.set(ControlMode.PercentOutput, powerLeft);
     right1.set(ControlMode.PercentOutput, powerRight);
     right2.set(ControlMode.PercentOutput, powerRight);
+  }
+
+  public double getDistance() {
+    SmartDashboard.putNumber("Distance", analogPotentiometer.get());
+    return analogPotentiometer.get();
   }
   
   @Override

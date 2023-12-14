@@ -19,7 +19,7 @@ import frc.robot.commands.DrivetoDistance;
 public class RobotContainer {
   
   //init your joysticks
-  private XboxController controller = new XboxController(1);
+  private XboxController controller = new XboxController(0);
   
   // init your subsystems
   private DriveBaseSubsystem driveBaseSubsystem = new DriveBaseSubsystem();
@@ -28,22 +28,21 @@ public class RobotContainer {
   // innit your commands
   private ArcadeDrive arcadeDrive = new ArcadeDrive(driveBaseSubsystem, controller);
 
-  AnalogPotentiometer analogPotentiometer = new AnalogPotentiometer(0, 180, 30);
-
   public RobotContainer() {
     configureBindings();
     configureButtonBindings();
     setDefaultCommands();
+    getAutonomousCommand();
   }
 
   private void configureButtonBindings() {
-    new JoystickButton(controller, XboxController.Button.kA.value).onTrue(new DrivetoDistance(driveBaseSubsystem, analogPotentiometer));
+    new JoystickButton(controller, XboxController.Button.kA.value).onTrue(new DrivetoDistance(driveBaseSubsystem));
   }
 
   private void configureBindings() {}
 
   public Command getAutonomousCommand() {
-    return new DrivetoDistance(driveBaseSubsystem, analogPotentiometer);
+    return new DrivetoDistance(driveBaseSubsystem);
   }
 
   

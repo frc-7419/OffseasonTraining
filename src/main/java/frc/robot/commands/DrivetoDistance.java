@@ -14,25 +14,24 @@ public class DrivetoDistance extends CommandBase {
 
     DriveBaseSubsystem driveBaseSubsystem;
     DistanceSensorSubsystem distanceSensorSubsystem;
-    float target;
-    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem, AnalogPotentiometer analogPotentiometer) {
+    double target;
+    public DrivetoDistance(DriveBaseSubsystem driveBaseSubsystem) {
       this.driveBaseSubsystem = driveBaseSubsystem;
-      distanceSensorSubsystem = new DistanceSensorSubsystem(analogPotentiometer);
       addRequirements(driveBaseSubsystem);
     }
   
     @Override
     public void initialize() {
-      target = 0.09f;
+      target = 0.09;
     }
 
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        double setPower = distanceSensorSubsystem.getDistance();
+        double setPower = driveBaseSubsystem.getDistance();
         if (setPower > target) {
-            driveBaseSubsystem.setLeftRightPower(5 * setPower, 5 * setPower);
+            driveBaseSubsystem.setLeftRightPower(0.3, 0.3);
         }
     }
 
