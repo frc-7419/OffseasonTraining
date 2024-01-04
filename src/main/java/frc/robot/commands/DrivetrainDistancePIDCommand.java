@@ -34,7 +34,6 @@ public class DrivetrainDistancePIDCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        // Modify this condition based on your specific requirements
         return false;
     }
 }
