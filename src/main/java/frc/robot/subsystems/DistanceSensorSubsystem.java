@@ -13,10 +13,13 @@ public class DistanceSensorSubsystem extends SubsystemBase {
   }
   
   // make a getDistance method
+  public double getDistance() {
+    return distanceSensor.get();
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Distance", distanceSensor.get())
+    SmartDashboard.putNumber("Distance", distanceSensor.get());
   }
 }
