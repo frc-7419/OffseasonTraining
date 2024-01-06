@@ -29,17 +29,19 @@ public class DrivetoDistance extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        double setPower = driveBaseSubsystem.getDistance();
-        if (setPower > target) {
-            driveBaseSubsystem.setLeftRightPower(0.3, 0.3);
-        }
+      double setPower = driveBaseSubsystem.getDistance();
+      if (setPower > target) {
+        driveBaseSubsystem.setLeftRightPower(0.5, 0.5);
+      } else {
+        driveBaseSubsystem.setLeftRightPower(0, 0);
+      }
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        driveBaseSubsystem.setLeftRightPower(0, 0);
-        driveBaseSubsystem.brake();
+      driveBaseSubsystem.setLeftRightPower(0, 0);
+      driveBaseSubsystem.brake();
     }
 
     // Returns true when the command should end.

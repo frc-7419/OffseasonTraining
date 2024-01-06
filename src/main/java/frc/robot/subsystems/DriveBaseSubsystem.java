@@ -65,6 +65,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
   public double getDistance() {
     SmartDashboard.putNumber("Distance", analogPotentiometer.get());
+    System.out.println(analogPotentiometer.get());
     return analogPotentiometer.get();
   }
   
